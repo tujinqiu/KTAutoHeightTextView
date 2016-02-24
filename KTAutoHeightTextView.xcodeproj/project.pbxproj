@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E35CDD401C7DF2C2003FA263 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E35CDD3F1C7DF2C2003FA263 /* main.m */; };
+		E35CDD431C7DF2C2003FA263 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E35CDD421C7DF2C2003FA263 /* AppDelegate.m */; };
+		E35CDD461C7DF2C2003FA263 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E35CDD451C7DF2C2003FA263 /* ViewController.m */; };
+		E35CDD491C7DF2C2003FA263 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E35CDD471C7DF2C2003FA263 /* Main.storyboard */; };
+		E35CDD4B1C7DF2C2003FA263 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E35CDD4A1C7DF2C2003FA263 /* Assets.xcassets */; };
+		E35CDD4E1C7DF2C2003FA263 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E35CDD4C1C7DF2C2003FA263 /* LaunchScreen.storyboard */; };
+		E35CDD591C7DF2C2003FA263 /* KTAutoHeightTextViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E35CDD581C7DF2C2003FA263 /* KTAutoHeightTextViewTests.m */; };
+		E35CDD641C7DF2C3003FA263 /* KTAutoHeightTextViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E35CDD631C7DF2C3003FA263 /* KTAutoHeightTextViewUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E35CDD551C7DF2C2003FA263 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E35CDD331C7DF2C2003FA263 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E35CDD3A1C7DF2C2003FA263;
+			remoteInfo = KTAutoHeightTextView;
+		};
+		E35CDD601C7DF2C3003FA263 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E35CDD331C7DF2C2003FA263 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E35CDD3A1C7DF2C2003FA263;
+			remoteInfo = KTAutoHeightTextView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E35CDD3B1C7DF2C2003FA263 /* KTAutoHeightTextView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KTAutoHeightTextView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E35CDD3F1C7DF2C2003FA263 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E35CDD411C7DF2C2003FA263 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E35CDD421C7DF2C2003FA263 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E35CDD441C7DF2C2003FA263 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E35CDD451C7DF2C2003FA263 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E35CDD481C7DF2C2003FA263 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E35CDD4A1C7DF2C2003FA263 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E35CDD4D1C7DF2C2003FA263 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E35CDD4F1C7DF2C2003FA263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E35CDD541C7DF2C2003FA263 /* KTAutoHeightTextViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KTAutoHeightTextViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E35CDD581C7DF2C2003FA263 /* KTAutoHeightTextViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KTAutoHeightTextViewTests.m; sourceTree = "<group>"; };
+		E35CDD5A1C7DF2C2003FA263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E35CDD5F1C7DF2C3003FA263 /* KTAutoHeightTextViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KTAutoHeightTextViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E35CDD631C7DF2C3003FA263 /* KTAutoHeightTextViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KTAutoHeightTextViewUITests.m; sourceTree = "<group>"; };
+		E35CDD651C7DF2C3003FA263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E35CDD381C7DF2C2003FA263 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E35CDD511C7DF2C2003FA263 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E35CDD5C1C7DF2C3003FA263 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E35CDD321C7DF2C2003FA263 = {
+			isa = PBXGroup;
+			children = (
+				E35CDD3D1C7DF2C2003FA263 /* KTAutoHeightTextView */,
+				E35CDD571C7DF2C2003FA263 /* KTAutoHeightTextViewTests */,
+				E35CDD621C7DF2C3003FA263 /* KTAutoHeightTextViewUITests */,
+				E35CDD3C1C7DF2C2003FA263 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E35CDD3C1C7DF2C2003FA263 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E35CDD3B1C7DF2C2003FA263 /* KTAutoHeightTextView.app */,
+				E35CDD541C7DF2C2003FA263 /* KTAutoHeightTextViewTests.xctest */,
+				E35CDD5F1C7DF2C3003FA263 /* KTAutoHeightTextViewUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E35CDD3D1C7DF2C2003FA263 /* KTAutoHeightTextView */ = {
+			isa = PBXGroup;
+			children = (
+				E35CDD411C7DF2C2003FA263 /* AppDelegate.h */,
+				E35CDD421C7DF2C2003FA263 /* AppDelegate.m */,
+				E35CDD441C7DF2C2003FA263 /* ViewController.h */,
+				E35CDD451C7DF2C2003FA263 /* ViewController.m */,
+				E35CDD471C7DF2C2003FA263 /* Main.storyboard */,
+				E35CDD4A1C7DF2C2003FA263 /* Assets.xcassets */,
+				E35CDD4C1C7DF2C2003FA263 /* LaunchScreen.storyboard */,
+				E35CDD4F1C7DF2C2003FA263 /* Info.plist */,
+				E35CDD3E1C7DF2C2003FA263 /* Supporting Files */,
+			);
+			path = KTAutoHeightTextView;
+			sourceTree = "<group>";
+		};
+		E35CDD3E1C7DF2C2003FA263 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E35CDD3F1C7DF2C2003FA263 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E35CDD571C7DF2C2003FA263 /* KTAutoHeightTextViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				E35CDD581C7DF2C2003FA263 /* KTAutoHeightTextViewTests.m */,
+				E35CDD5A1C7DF2C2003FA263 /* Info.plist */,
+			);
+			path = KTAutoHeightTextViewTests;
+			sourceTree = "<group>";
+		};
+		E35CDD621C7DF2C3003FA263 /* KTAutoHeightTextViewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E35CDD631C7DF2C3003FA263 /* KTAutoHeightTextViewUITests.m */,
+				E35CDD651C7DF2C3003FA263 /* Info.plist */,
+			);
+			path = KTAutoHeightTextViewUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E35CDD3A1C7DF2C2003FA263 /* KTAutoHeightTextView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E35CDD681C7DF2C3003FA263 /* Build configuration list for PBXNativeTarget "KTAutoHeightTextView" */;
+			buildPhases = (
+				E35CDD371C7DF2C2003FA263 /* Sources */,
+				E35CDD381C7DF2C2003FA263 /* Frameworks */,
+				E35CDD391C7DF2C2003FA263 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KTAutoHeightTextView;
+			productName = KTAutoHeightTextView;
+			productReference = E35CDD3B1C7DF2C2003FA263 /* KTAutoHeightTextView.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E35CDD531C7DF2C2003FA263 /* KTAutoHeightTextViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E35CDD6B1C7DF2C3003FA263 /* Build configuration list for PBXNativeTarget "KTAutoHeightTextViewTests" */;
+			buildPhases = (
+				E35CDD501C7DF2C2003FA263 /* Sources */,
+				E35CDD511C7DF2C2003FA263 /* Frameworks */,
+				E35CDD521C7DF2C2003FA263 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E35CDD561C7DF2C2003FA263 /* PBXTargetDependency */,
+			);
+			name = KTAutoHeightTextViewTests;
+			productName = KTAutoHeightTextViewTests;
+			productReference = E35CDD541C7DF2C2003FA263 /* KTAutoHeightTextViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E35CDD5E1C7DF2C3003FA263 /* KTAutoHeightTextViewUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E35CDD6E1C7DF2C3003FA263 /* Build configuration list for PBXNativeTarget "KTAutoHeightTextViewUITests" */;
+			buildPhases = (
+				E35CDD5B1C7DF2C3003FA263 /* Sources */,
+				E35CDD5C1C7DF2C3003FA263 /* Frameworks */,
+				E35CDD5D1C7DF2C3003FA263 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E35CDD611C7DF2C3003FA263 /* PBXTargetDependency */,
+			);
+			name = KTAutoHeightTextViewUITests;
+			productName = KTAutoHeightTextViewUITests;
+			productReference = E35CDD5F1C7DF2C3003FA263 /* KTAutoHeightTextViewUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E35CDD331C7DF2C2003FA263 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = tujinqiu;
+				TargetAttributes = {
+					E35CDD3A1C7DF2C2003FA263 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					E35CDD531C7DF2C2003FA263 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = E35CDD3A1C7DF2C2003FA263;
+					};
+					E35CDD5E1C7DF2C3003FA263 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = E35CDD3A1C7DF2C2003FA263;
+					};
+				};
+			};
+			buildConfigurationList = E35CDD361C7DF2C2003FA263 /* Build configuration list for PBXProject "KTAutoHeightTextView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E35CDD321C7DF2C2003FA263;
+			productRefGroup = E35CDD3C1C7DF2C2003FA263 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E35CDD3A1C7DF2C2003FA263 /* KTAutoHeightTextView */,
+				E35CDD531C7DF2C2003FA263 /* KTAutoHeightTextViewTests */,
+				E35CDD5E1C7DF2C3003FA263 /* KTAutoHeightTextViewUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E35CDD391C7DF2C2003FA263 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E35CDD4E1C7DF2C2003FA263 /* LaunchScreen.storyboard in Resources */,
+				E35CDD4B1C7DF2C2003FA263 /* Assets.xcassets in Resources */,
+				E35CDD491C7DF2C2003FA263 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E35CDD521C7DF2C2003FA263 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E35CDD5D1C7DF2C3003FA263 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E35CDD371C7DF2C2003FA263 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E35CDD461C7DF2C2003FA263 /* ViewController.m in Sources */,
+				E35CDD431C7DF2C2003FA263 /* AppDelegate.m in Sources */,
+				E35CDD401C7DF2C2003FA263 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E35CDD501C7DF2C2003FA263 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E35CDD591C7DF2C2003FA263 /* KTAutoHeightTextViewTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E35CDD5B1C7DF2C3003FA263 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E35CDD641C7DF2C3003FA263 /* KTAutoHeightTextViewUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E35CDD561C7DF2C2003FA263 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E35CDD3A1C7DF2C2003FA263 /* KTAutoHeightTextView */;
+			targetProxy = E35CDD551C7DF2C2003FA263 /* PBXContainerItemProxy */;
+		};
+		E35CDD611C7DF2C3003FA263 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E35CDD3A1C7DF2C2003FA263 /* KTAutoHeightTextView */;
+			targetProxy = E35CDD601C7DF2C3003FA263 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E35CDD471C7DF2C2003FA263 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E35CDD481C7DF2C2003FA263 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E35CDD4C1C7DF2C2003FA263 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E35CDD4D1C7DF2C2003FA263 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E35CDD661C7DF2C3003FA263 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E35CDD671C7DF2C3003FA263 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E35CDD691C7DF2C3003FA263 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = KTAutoHeightTextView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = LT.KTAutoHeightTextView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E35CDD6A1C7DF2C3003FA263 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = KTAutoHeightTextView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = LT.KTAutoHeightTextView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		E35CDD6C1C7DF2C3003FA263 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = KTAutoHeightTextViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = LT.KTAutoHeightTextViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KTAutoHeightTextView.app/KTAutoHeightTextView";
+			};
+			name = Debug;
+		};
+		E35CDD6D1C7DF2C3003FA263 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = KTAutoHeightTextViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = LT.KTAutoHeightTextViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KTAutoHeightTextView.app/KTAutoHeightTextView";
+			};
+			name = Release;
+		};
+		E35CDD6F1C7DF2C3003FA263 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = KTAutoHeightTextViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = LT.KTAutoHeightTextViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = KTAutoHeightTextView;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		E35CDD701C7DF2C3003FA263 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = KTAutoHeightTextViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = LT.KTAutoHeightTextViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = KTAutoHeightTextView;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E35CDD361C7DF2C2003FA263 /* Build configuration list for PBXProject "KTAutoHeightTextView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E35CDD661C7DF2C3003FA263 /* Debug */,
+				E35CDD671C7DF2C3003FA263 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E35CDD681C7DF2C3003FA263 /* Build configuration list for PBXNativeTarget "KTAutoHeightTextView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E35CDD691C7DF2C3003FA263 /* Debug */,
+				E35CDD6A1C7DF2C3003FA263 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E35CDD6B1C7DF2C3003FA263 /* Build configuration list for PBXNativeTarget "KTAutoHeightTextViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E35CDD6C1C7DF2C3003FA263 /* Debug */,
+				E35CDD6D1C7DF2C3003FA263 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E35CDD6E1C7DF2C3003FA263 /* Build configuration list for PBXNativeTarget "KTAutoHeightTextViewUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E35CDD6F1C7DF2C3003FA263 /* Debug */,
+				E35CDD701C7DF2C3003FA263 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E35CDD331C7DF2C2003FA263 /* Project object */;
+}
