@@ -15,6 +15,9 @@
 		E35CDD4E1C7DF2C2003FA263 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E35CDD4C1C7DF2C2003FA263 /* LaunchScreen.storyboard */; };
 		E35CDD591C7DF2C2003FA263 /* KTAutoHeightTextViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E35CDD581C7DF2C2003FA263 /* KTAutoHeightTextViewTests.m */; };
 		E35CDD641C7DF2C3003FA263 /* KTAutoHeightTextViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E35CDD631C7DF2C3003FA263 /* KTAutoHeightTextViewUITests.m */; };
+		E35CDD721C7DF473003FA263 /* KTKeyboardAvoidingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E35CDD711C7DF473003FA263 /* KTKeyboardAvoidingView.m */; };
+		E35CDD751C7DF47F003FA263 /* KTAutoHeightTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E35CDD741C7DF47F003FA263 /* KTAutoHeightTextView.m */; };
+		E35CDD791C7E005E003FA263 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E35CDD781C7E005E003FA263 /* TableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,12 @@
 		E35CDD5F1C7DF2C3003FA263 /* KTAutoHeightTextViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KTAutoHeightTextViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E35CDD631C7DF2C3003FA263 /* KTAutoHeightTextViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KTAutoHeightTextViewUITests.m; sourceTree = "<group>"; };
 		E35CDD651C7DF2C3003FA263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E35CDD711C7DF473003FA263 /* KTKeyboardAvoidingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTKeyboardAvoidingView.m; sourceTree = "<group>"; };
+		E35CDD731C7DF47F003FA263 /* KTAutoHeightTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTAutoHeightTextView.h; sourceTree = "<group>"; };
+		E35CDD741C7DF47F003FA263 /* KTAutoHeightTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTAutoHeightTextView.m; sourceTree = "<group>"; };
+		E35CDD761C7DF488003FA263 /* KTKeyboardAvoidingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KTKeyboardAvoidingView.h; sourceTree = "<group>"; };
+		E35CDD771C7E005E003FA263 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		E35CDD781C7E005E003FA263 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +90,10 @@
 		E35CDD321C7DF2C2003FA263 = {
 			isa = PBXGroup;
 			children = (
+				E35CDD731C7DF47F003FA263 /* KTAutoHeightTextView.h */,
+				E35CDD741C7DF47F003FA263 /* KTAutoHeightTextView.m */,
+				E35CDD761C7DF488003FA263 /* KTKeyboardAvoidingView.h */,
+				E35CDD711C7DF473003FA263 /* KTKeyboardAvoidingView.m */,
 				E35CDD3D1C7DF2C2003FA263 /* KTAutoHeightTextView */,
 				E35CDD571C7DF2C2003FA263 /* KTAutoHeightTextViewTests */,
 				E35CDD621C7DF2C3003FA263 /* KTAutoHeightTextViewUITests */,
@@ -106,6 +119,8 @@
 				E35CDD441C7DF2C2003FA263 /* ViewController.h */,
 				E35CDD451C7DF2C2003FA263 /* ViewController.m */,
 				E35CDD471C7DF2C2003FA263 /* Main.storyboard */,
+				E35CDD771C7E005E003FA263 /* TableViewCell.h */,
+				E35CDD781C7E005E003FA263 /* TableViewCell.m */,
 				E35CDD4A1C7DF2C2003FA263 /* Assets.xcassets */,
 				E35CDD4C1C7DF2C2003FA263 /* LaunchScreen.storyboard */,
 				E35CDD4F1C7DF2C2003FA263 /* Info.plist */,
@@ -270,7 +285,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E35CDD751C7DF47F003FA263 /* KTAutoHeightTextView.m in Sources */,
+				E35CDD791C7E005E003FA263 /* TableViewCell.m in Sources */,
 				E35CDD461C7DF2C2003FA263 /* ViewController.m in Sources */,
+				E35CDD721C7DF473003FA263 /* KTKeyboardAvoidingView.m in Sources */,
 				E35CDD431C7DF2C2003FA263 /* AppDelegate.m in Sources */,
 				E35CDD401C7DF2C2003FA263 /* main.m in Sources */,
 			);
