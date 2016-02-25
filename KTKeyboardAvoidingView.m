@@ -41,11 +41,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(OVKeyboardWillShow:) name:UIKeyboardWillChangeFrameNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(OVKeyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(OVKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(OVTextViewDidBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(OVTextViewDidEndEditing:) name:UITextViewTextDidEndEditingNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(OVTextDidBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(OVTextDidEndEditing:) name:UITextViewTextDidEndEditingNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(OVTextDidBeginEditing:) name:UITextFieldTextDidBeginEditingNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(OVTextDidEndEditing:) name:UITextFieldTextDidEndEditingNotification object:nil];
 
     self.priorHeight = self.OVLayoutGuideConstraint.constant;
-    self.touchesOusideAutoHide = YES;
 }
 
 - (void)dealloc
@@ -93,14 +94,17 @@
                      completion:nil];
 }
 
-- (void)OVTextViewDidBeginEditing:(NSNotification *)notif
+- (void)OVTextDidBeginEditing:(NSNotification *)notif
 {
-    self.textFieldViewWindow = ((UIView *)(notif.object)).window;
+    if (self.touchesOusideAutoHide)
+    {
+        self.textFieldViewWindow = ((UIView *)(notif.object)).window;
+    }
 }
 
-- (void)OVTextViewDidEndEditing:(NSNotification *)notif
+- (void)OVTextDidEndEditing:(NSNotification *)notif
 {
-    if (self.textFieldViewWindow && self.textFieldViewWindow == ((UIView *)(notif.object)).window && [self.textFieldViewWindow.gestureRecognizers containsObject:self.tapGesture])
+    if ([self.textFieldViewWindow.gestureRecognizers containsObject:self.tapGesture])
     {
         [self.textFieldViewWindow removeGestureRecognizer:self.tapGesture];
     }
@@ -119,11 +123,6 @@
 }
 
 #pragma mark -- getter and setter --
-
-- (void)setTouchesOusideAutoHide:(BOOL)touchesOusideAutoHide
-{
-    _touchesOusideAutoHide = touchesOusideAutoHide;
-}
 
 - (UITapGestureRecognizer *)tapGesture
 {

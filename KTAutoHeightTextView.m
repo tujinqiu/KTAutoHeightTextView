@@ -19,6 +19,21 @@
 
 #pragma mark -- life cycle --
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame])
+    {
+        [self setup];
+    }
+    
+    return self;
+}
+
+- (void)awakeFromNib
+{
+    [self setup];
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -31,12 +46,22 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)setup
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTextDidChange:) name:UITextViewTextDidEndEditingNotification object:self];
+}
+
 #pragma mark -- notifis --
 
 - (void)handleTextDidChange:(NSNotification *)notif
 {
+    if (!self.placeholder)
+    {
+        return;
+    }
+    
     UITextView *textView = notif.object;
-    if (textView.text.length > 0 && self.placeholder)
+    if (textView.text.length > 0)
     {
         self.placeholderLabel.hidden = YES;
     }
@@ -70,37 +95,33 @@
 - (void)setPlaceholder:(NSString *)placeholder
 {
     _placeholder = placeholder;
-    if (placeholder && [self.text isEqualToString:@""])
+    if (placeholder)
     {
-        self.placeholderLabel.hidden = NO;
-        self.placeholderLabel.text = placeholder;
+        if (!_placeholderLabel)
+        {
+            _placeholderLabel = [[UILabel alloc] init];
+            _placeholderLabel.font = self.font;
+            _placeholderLabel.textAlignment = NSTextAlignmentLeft;
+            UIEdgeInsets inset = self.textContainerInset;
+            CGRect bounds = self.bounds;
+            _placeholderLabel.frame = CGRectMake(4.0, inset.top, bounds.size.width - inset.left - inset.right, self.font.lineHeight);
+            _placeholderLabel.textColor = [UIColor colorWithWhite:0.801 alpha:1.000];
+            [self addSubview:_placeholderLabel];
+            _placeholderLabel.text = placeholder;
+        }
+        if (self.text.length > 0)
+        {
+            _placeholderLabel.hidden = YES;
+        }
     }
     else
     {
-        self.placeholderLabel.hidden = YES;
+        if (_placeholderLabel)
+        {
+            [_placeholderLabel removeFromSuperview];
+            _placeholderLabel = nil;
+        }
     }
-}
-
-- (UILabel *)placeholderLabel
-{
-    if (!_placeholderLabel)
-    {
-        _placeholderLabel = [[UILabel alloc] init];
-        _placeholderLabel.font = self.font;
-        _placeholderLabel.textAlignment = NSTextAlignmentLeft;
-        UIEdgeInsets insets = self.textContainerInset;
-        CGRect bounds = self.bounds;
-        NSDictionary *attr = @{NSFontAttributeName : self.font};
-        NSStringDrawingOptions options = NSStringDrawingUsesLineFragmentOrigin;
-        CGRect suggestRect = [@"placeholder" boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, 1.0) options:options attributes:attr context:nil];
-        _placeholderLabel.frame = CGRectMake(4.0, insets.top, bounds.size.width - insets.left - insets.right, suggestRect.size.height);
-        _placeholderLabel.textColor = [UIColor colorWithWhite:0.801 alpha:1.000];
-        [self addSubview:_placeholderLabel];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTextDidChange:) name:UITextViewTextDidChangeNotification object:self];
-    }
-    
-    return _placeholderLabel;
 }
 
 #pragma mark -- 重写系统的setter --
@@ -113,10 +134,7 @@
     {
         UIEdgeInsets insets = self.textContainerInset;
         CGRect bounds = self.bounds;
-        NSDictionary *attr = @{NSFontAttributeName : font};
-        NSStringDrawingOptions options = NSStringDrawingUsesLineFragmentOrigin;
-        CGRect suggestRect = [@"placeholder" boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, 1.0) options:options attributes:attr context:nil];
-        _placeholderLabel.frame = CGRectMake(insets.left, insets.top, bounds.size.width - insets.left - insets.right, suggestRect.size.width);
+        _placeholderLabel.frame = CGRectMake(insets.left, insets.top, bounds.size.width - insets.left - insets.right, font.lineHeight);
     }
 }
 
