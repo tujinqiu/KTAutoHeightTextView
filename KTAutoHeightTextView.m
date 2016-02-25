@@ -48,7 +48,7 @@
 
 - (void)setup
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTextDidChange:) name:UITextViewTextDidEndEditingNotification object:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTextDidChange:) name:UITextViewTextDidChangeNotification object:self];
 }
 
 #pragma mark -- notifis --
@@ -134,7 +134,7 @@
     {
         UIEdgeInsets insets = self.textContainerInset;
         CGRect bounds = self.bounds;
-        _placeholderLabel.frame = CGRectMake(insets.left, insets.top, bounds.size.width - insets.left - insets.right, font.lineHeight);
+        _placeholderLabel.frame = CGRectMake(4.0, insets.top, bounds.size.width - insets.left - insets.right, font.lineHeight);
     }
 }
 
@@ -149,6 +149,12 @@
     {
         if (self.layoutFinished) // 更新约束或者大小
         {
+            if (fabs(contentSize.height - oldHeight) < self.font.lineHeight - self.textContainerInset.bottom / 2.0) // 变化量小于1个行距，继续寻找height约束
+            {
+                [self findHeightConstraint];
+                
+                return;
+            }
             if (self.heightConstraint)
             {
                 self.heightConstraint.constant += contentSize.height - oldHeight;
@@ -163,18 +169,23 @@
         }
         else // 查找height约束，记录初值
         {
-            if (self.heightConstraint)
-            {
-                return;
-            }
-            for (NSLayoutConstraint *constraint in self.constraints)
-            {
-                if (constraint.secondItem == nil && constraint.firstAttribute == NSLayoutAttributeHeight)
-                {
-                    self.heightConstraint = constraint;
-                    break;
-                }
-            }
+            [self findHeightConstraint];
+        }
+    }
+}
+
+- (void)findHeightConstraint
+{
+    if (self.heightConstraint)
+    {
+        return;
+    }
+    for (NSLayoutConstraint *constraint in self.constraints)
+    {
+        if (constraint.secondItem == nil && constraint.firstAttribute == NSLayoutAttributeHeight)
+        {
+            self.heightConstraint = constraint;
+            break;
         }
     }
 }
