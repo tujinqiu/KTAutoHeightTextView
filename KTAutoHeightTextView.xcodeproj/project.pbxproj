@@ -18,6 +18,7 @@
 		E35CDD721C7DF473003FA263 /* KTKeyboardAvoidingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E35CDD711C7DF473003FA263 /* KTKeyboardAvoidingView.m */; };
 		E35CDD751C7DF47F003FA263 /* KTAutoHeightTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E35CDD741C7DF47F003FA263 /* KTAutoHeightTextView.m */; };
 		E35CDD791C7E005E003FA263 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E35CDD781C7E005E003FA263 /* TableViewCell.m */; };
+		E3E7EE1B1C85D9D600E6CB5C /* 输入框.gif in Resources */ = {isa = PBXBuildFile; fileRef = E3E7EE1A1C85D9D600E6CB5C /* 输入框.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		E35CDD761C7DF488003FA263 /* KTKeyboardAvoidingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KTKeyboardAvoidingView.h; sourceTree = "<group>"; };
 		E35CDD771C7E005E003FA263 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
 		E35CDD781C7E005E003FA263 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		E3E7EE1A1C85D9D600E6CB5C /* 输入框.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "输入框.gif"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		E35CDD321C7DF2C2003FA263 = {
 			isa = PBXGroup;
 			children = (
+				E3E7EE1A1C85D9D600E6CB5C /* 输入框.gif */,
 				E35CDD731C7DF47F003FA263 /* KTAutoHeightTextView.h */,
 				E35CDD741C7DF47F003FA263 /* KTAutoHeightTextView.m */,
 				E35CDD761C7DF488003FA263 /* KTKeyboardAvoidingView.h */,
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E35CDD4E1C7DF2C2003FA263 /* LaunchScreen.storyboard in Resources */,
+				E3E7EE1B1C85D9D600E6CB5C /* 输入框.gif in Resources */,
 				E35CDD4B1C7DF2C2003FA263 /* Assets.xcassets in Resources */,
 				E35CDD491C7DF2C2003FA263 /* Main.storyboard in Resources */,
 			);
@@ -516,6 +520,7 @@
 				E35CDD6A1C7DF2C3003FA263 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E35CDD6B1C7DF2C3003FA263 /* Build configuration list for PBXNativeTarget "KTAutoHeightTextViewTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +529,7 @@
 				E35CDD6D1C7DF2C3003FA263 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E35CDD6E1C7DF2C3003FA263 /* Build configuration list for PBXNativeTarget "KTAutoHeightTextViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +538,7 @@
 				E35CDD701C7DF2C3003FA263 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
