@@ -61,14 +61,7 @@
     }
     
     UITextView *textView = notif.object;
-    if (textView.text.length > 0)
-    {
-        self.placeholderLabel.hidden = YES;
-    }
-    else
-    {
-        self.placeholderLabel.hidden = NO;
-    }
+    self.placeholderLabel.hidden = textView.text.length > 0;
 }
 
 #pragma mark -- getter and setter --
@@ -109,10 +102,7 @@
             [self addSubview:_placeholderLabel];
             _placeholderLabel.text = placeholder;
         }
-        if (self.text.length > 0)
-        {
-            _placeholderLabel.hidden = YES;
-        }
+        _placeholderLabel.hidden = self.text.length > 0;
     }
     else
     {
@@ -140,8 +130,6 @@
 
 - (void)setContentSize:(CGSize)contentSize
 {
-    CGFloat oldHeight = self.contentSize.height;
-    
     [super setContentSize:contentSize];
     
     // 监听size变化
@@ -149,21 +137,21 @@
     {
         if (self.layoutFinished) // 更新约束或者大小
         {
-            if (fabs(contentSize.height - oldHeight) < self.font.lineHeight - self.textContainerInset.bottom / 2.0) // 变化量小于1个行距，继续寻找height约束
+            CGFloat fitHeight = [self sizeThatFits:CGSizeMake(self.bounds.size.width, CGFLOAT_MAX)].height;
+            if (fabs(fitHeight - self.bounds.size.height) < self.font.lineHeight * 0.5) // 变化量小于一个行距的0.5倍
             {
                 [self findHeightConstraint];
-                
                 return;
             }
             if (self.heightConstraint)
             {
-                self.heightConstraint.constant += contentSize.height - oldHeight;
+                self.heightConstraint.constant = fitHeight;
                 [self layoutIfNeeded];
             }
             else
             {
                 CGRect bounds = self.bounds;
-                bounds.size.height += contentSize.height - oldHeight;
+                bounds.size.height = fitHeight;
                 self.bounds = bounds;
             }
         }
