@@ -13,7 +13,7 @@
 
 @property (nonatomic, assign) CGFloat priorHeight;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
-@property (nonatomic, weak) UIWindow *textFieldViewWindow;
+@property (nonatomic, weak) UIWindow *textWindow;
 
 @end
 
@@ -76,9 +76,9 @@
 
 - (void)OVKeyboardDidShow:(NSNotification *)notif
 {
-    if (self.textFieldViewWindow && self.touchesOusideAutoHide && ![self.textFieldViewWindow.gestureRecognizers containsObject:self.tapGesture])
+    if (self.textWindow && self.touchesOusideAutoHide && ![self.textWindow.gestureRecognizers containsObject:self.tapGesture])
     {
-        [self.textFieldViewWindow addGestureRecognizer:self.tapGesture];
+        [self.textWindow addGestureRecognizer:self.tapGesture];
     }
 }
 
@@ -98,15 +98,15 @@
 {
     if (self.touchesOusideAutoHide)
     {
-        self.textFieldViewWindow = ((UIView *)(notif.object)).window;
+        self.textWindow = ((UIView *)(notif.object)).window;
     }
 }
 
 - (void)OVTextDidEndEditing:(NSNotification *)notif
 {
-    if ([self.textFieldViewWindow.gestureRecognizers containsObject:self.tapGesture])
+    if ([self.textWindow.gestureRecognizers containsObject:self.tapGesture])
     {
-        [self.textFieldViewWindow removeGestureRecognizer:self.tapGesture];
+        [self.textWindow removeGestureRecognizer:self.tapGesture];
     }
 }
 
