@@ -16,4 +16,5 @@ IB_DESIGNABLE
 // placeholder
 @property (nonatomic, copy) IBInspectable NSString *placeholder;
 
+@property (assign, nonatomic) IBInspectable NSUInteger limitLineNumber; //限制行数
 @end
