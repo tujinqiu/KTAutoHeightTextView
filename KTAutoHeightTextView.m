@@ -12,7 +12,7 @@
 @property (nonatomic, strong) UILabel *placeholderLabel;
 @property (nonatomic, weak) NSLayoutConstraint *heightConstraint;
 @property (nonatomic, assign) BOOL layoutFinished;
-
+@property (assign, nonatomic) CGFloat limitHeight;
 @end
 
 @implementation KTAutoHeightTextView
@@ -114,6 +114,12 @@
     }
 }
 
+- (void)setLimitLineNumber:(NSUInteger)limitLineNumber {
+    _limitLineNumber = limitLineNumber;
+    
+    _limitHeight = self.font.lineHeight * _limitLineNumber;
+}
+
 #pragma mark -- 重写系统的setter --
 
 - (void)setFont:(UIFont *)font
@@ -145,12 +151,30 @@
             }
             if (self.heightConstraint)
             {
-                self.heightConstraint.constant = fitHeight;
+                if (self.limitLineNumber > 0) {
+                    
+                    self.heightConstraint.constant = fitHeight > _limitHeight ? _limitHeight : fitHeight;
+                }
+                else {
+                    self.heightConstraint.constant = fitHeight;
+                }
+                
+                
                 [self layoutIfNeeded];
             }
             else
             {
                 CGRect bounds = self.bounds;
+                
+                
+                if (self.limitLineNumber > 0) {
+                    
+                    bounds.size.height = fitHeight > _limitHeight ? _limitHeight : fitHeight;
+                }
+                else {
+                    bounds.size.height = fitHeight;
+                }
+                
                 bounds.size.height = fitHeight;
                 self.bounds = bounds;
             }
