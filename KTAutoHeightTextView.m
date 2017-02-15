@@ -9,59 +9,77 @@
 
 @interface KTAutoHeightTextView ()
 
-@property (nonatomic, strong) UILabel *placeholderLabel;
-@property (nonatomic, weak) NSLayoutConstraint *heightConstraint;
-@property (nonatomic, assign) BOOL layoutFinished;
-
 @end
 
 @implementation KTAutoHeightTextView
 
 #pragma mark -- life cycle --
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    if (self = [super initWithFrame:frame])
-    {
-        [self setup];
-    }
-    
-    return self;
-}
-
 - (void)awakeFromNib
 {
-    [self setup];
+    [super awakeFromNib];
+    
+    [self addTextViewNotificationObservers];
+}
+
+- (void)dealloc
+{
+    [self removeTextViewNotificationObservers];
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     
-    self.layoutFinished = YES;
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)setup
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTextDidChange:) name:UITextViewTextDidChangeNotification object:self];
-}
-
-#pragma mark -- notifis --
-
-- (void)handleTextDidChange:(NSNotification *)notif
-{
-    if (!self.placeholder)
-    {
-        return;
+    // calculate size needed for the text to be visible without scrolling
+    CGSize sizeThatFits = [self sizeThatFits:self.frame.size];
+    float newHeight = sizeThatFits.height;
+    // if there is any minimal height constraint set, make sure we consider that
+    if (self.maxHeightConstraint) {
+        newHeight = MIN(newHeight, self.maxHeightConstraint.constant);
     }
-    
-    UITextView *textView = notif.object;
-    self.placeholderLabel.hidden = textView.text.length > 0;
+    // if there is any maximal height constraint set, make sure we consider that
+    if (self.minHeightConstraint) {
+        newHeight = MAX(newHeight, self.minHeightConstraint.constant);
+    }
+    // update the height constraint
+    self.heightConstraint.constant = newHeight;
+}
+
+#pragma mark -- notifications
+
+- (void)addTextViewNotificationObservers
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(kt_didReceiveTextViewNotification:)
+                                                 name:UITextViewTextDidChangeNotification
+                                               object:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(kt_didReceiveTextViewNotification:)
+                                                 name:UITextViewTextDidBeginEditingNotification
+                                               object:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(kt_didReceiveTextViewNotification:)
+                                                 name:UITextViewTextDidEndEditingNotification
+                                               object:self];
+}
+
+- (void)removeTextViewNotificationObservers
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UITextViewTextDidChangeNotification
+                                                  object:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UITextViewTextDidBeginEditingNotification
+                                                  object:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UITextViewTextDidEndEditingNotification
+                                                  object:self];
+}
+
+- (void)kt_didReceiveTextViewNotification:(NSNotification *)notification
+{
+    [self setNeedsDisplay];
 }
 
 #pragma mark -- getter and setter --
@@ -87,95 +105,68 @@
 
 - (void)setPlaceholder:(NSString *)placeholder
 {
-    _placeholder = placeholder;
-    if (placeholder)
-    {
-        if (!_placeholderLabel)
-        {
-            _placeholderLabel = [[UILabel alloc] init];
-            _placeholderLabel.font = self.font;
-            _placeholderLabel.textAlignment = NSTextAlignmentLeft;
-            UIEdgeInsets inset = self.textContainerInset;
-            CGRect bounds = self.bounds;
-            _placeholderLabel.frame = CGRectMake(4.0, inset.top, bounds.size.width - inset.left - inset.right, self.font.lineHeight);
-            _placeholderLabel.textColor = [UIColor colorWithWhite:0.801 alpha:1.000];
-            [self addSubview:_placeholderLabel];
-            _placeholderLabel.text = placeholder;
-        }
-        _placeholderLabel.hidden = self.text.length > 0;
-    }
-    else
-    {
-        if (_placeholderLabel)
-        {
-            [_placeholderLabel removeFromSuperview];
-            _placeholderLabel = nil;
-        }
-    }
+    _placeholder = [placeholder copy];
+    [self setNeedsDisplay];
 }
 
 #pragma mark -- 重写系统的setter --
 
+- (void)setBounds:(CGRect)bounds
+{
+    [super setBounds:bounds];
+    
+    if (self.contentSize.height <= self.bounds.size.height + 1){
+        self.contentOffset = CGPointZero; // Fix wrong contentOffset
+    }
+}
+
+- (void)setText:(NSString *)text
+{
+    [super setText:text];
+    [self setNeedsDisplay];
+}
+
+- (void)setAttributedText:(NSAttributedString *)attributedText
+{
+    [super setAttributedText:attributedText];
+    [self setNeedsDisplay];
+}
+
 - (void)setFont:(UIFont *)font
 {
     [super setFont:font];
+    [self setNeedsDisplay];
+}
+
+- (void)setTextAlignment:(NSTextAlignment)textAlignment
+{
+    [super setTextAlignment:textAlignment];
+    [self setNeedsDisplay];
+}
+
+#pragma mark - Drawing
+
+- (void)drawRect:(CGRect)rect
+{
+    [super drawRect:rect];
     
-    if (_placeholderLabel)
-    {
-        UIEdgeInsets insets = self.textContainerInset;
-        CGRect bounds = self.bounds;
-        _placeholderLabel.frame = CGRectMake(4.0, insets.top, bounds.size.width - insets.left - insets.right, font.lineHeight);
+    if ([self.text length] == 0 && self.placeholder) {
+        [[UIColor lightGrayColor] set];
+        [self.placeholder drawInRect:CGRectInset(rect, 6.0f, 8.0f) withAttributes:[self kt_placeholderTextAttributes]];
     }
 }
 
-- (void)setContentSize:(CGSize)contentSize
-{
-    [super setContentSize:contentSize];
-    
-    // 监听size变化
-    if (self.font)
-    {
-        if (self.layoutFinished) // 更新约束或者大小
-        {
-            CGFloat fitHeight = [self sizeThatFits:CGSizeMake(self.bounds.size.width, CGFLOAT_MAX)].height;
-            if (fabs(fitHeight - self.bounds.size.height) < self.font.lineHeight * 0.5) // 变化量小于一个行距的0.5倍
-            {
-                [self findHeightConstraint];
-                return;
-            }
-            if (self.heightConstraint)
-            {
-                self.heightConstraint.constant = fitHeight;
-                [self layoutIfNeeded];
-            }
-            else
-            {
-                CGRect bounds = self.bounds;
-                bounds.size.height = fitHeight;
-                self.bounds = bounds;
-            }
-        }
-        else // 查找height约束，记录初值
-        {
-            [self findHeightConstraint];
-        }
-    }
-}
+#pragma mark - Utilities
 
-- (void)findHeightConstraint
+- (NSDictionary *)kt_placeholderTextAttributes
 {
-    if (self.heightConstraint)
-    {
-        return;
-    }
-    for (NSLayoutConstraint *constraint in self.constraints)
-    {
-        if (constraint.secondItem == nil && constraint.firstAttribute == NSLayoutAttributeHeight)
-        {
-            self.heightConstraint = constraint;
-            break;
-        }
-    }
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+    paragraphStyle.alignment = self.textAlignment;
+    
+    return @{ NSFontAttributeName : self.font,
+              NSForegroundColorAttributeName : [UIColor lightGrayColor],
+              NSParagraphStyleAttributeName : paragraphStyle };
 }
 
 @end

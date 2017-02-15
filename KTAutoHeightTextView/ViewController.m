@@ -7,15 +7,10 @@
 //
 
 #import "ViewController.h"
-#import "TableViewCell.h"
 
-@interface ViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface ViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *commentNumLabel;
-
-@property (nonatomic, strong) NSArray *comments;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
 @end
 
@@ -24,38 +19,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
-    self.headerImageView.layer.masksToBounds = YES;
-    self.headerImageView.layer.cornerRadius = 15.0;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyboardFrameChange:) name:UIKeyboardDidChangeFrameNotification object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
     
-    NSDate *date = [NSDate date];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    self.timeLabel.text = [dateFormatter stringFromDate:date];
-    
-    self.comments = @[
-                      @[@"Header", @"风景美如画！"],
-                      @[@"Header", @"风景美如画！"],
-                      @[@"Header", @"风景美如画！"],
-                      @[@"Header", @"风景美如画！"],
-                      @[@"Header", @"风景美如画！"],
-                      @[@"Header", @"风景美如画！"],
-                      @[@"Header", @"风景美如画！"],
-                      @[@"Header", @"风景美如画！"],
-                      @[@"Header", @"风景美如画！"],
-                      @[@"Header", @"风景美如画！"],
-                      @[@"Header", @"风景美如画！"],
-                      @[@"Header", @"风景美如画！"],
-                      @[@"Header", @"风景美如画！"],
-                      @[@"Header", @"风景美如画！"],
-                      @[@"Header", @"风景美如画！"],
-                      @[@"Header", @"风景美如画！"],
-                      @[@"Header", @"风景美如画！"],
-                      @[@"Header", @"风景美如画！"],
-                      @[@"Header", @"风景美如画！"]
-                      ];
-    
-    self.commentNumLabel.text = [NSString stringWithFormat:@"%lu评论", (unsigned long)self.comments.count];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,19 +45,23 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (void)handleKeyboardFrameChange:(NSNotification *)notification
 {
-    return self.comments.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TableViewCell" forIndexPath:indexPath];
-    NSArray *comment = [self.comments objectAtIndex:indexPath.row];
-    cell.headerImageView.image = [UIImage imageNamed:[comment firstObject]];
-    cell.commentLabel.text = [comment lastObject];
-    
-    return cell;
+    NSDictionary *userInfo = [notification userInfo];
+    CGRect keyboardEndFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    if (CGRectIsNull(keyboardEndFrame)) {
+        return;
+    }
+    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    CGFloat height = 0.0;
+    if (fabs(keyboardEndFrame.origin.y - screenHeight) > 0.1) {
+        height = CGRectGetHeight(keyboardEndFrame);
+    }
+    double animationDuration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    self.bottomConstraint.constant = height;
+    [UIView animateWithDuration:animationDuration animations:^{
+        [self.view layoutIfNeeded];
+    }];
 }
 
 @end
